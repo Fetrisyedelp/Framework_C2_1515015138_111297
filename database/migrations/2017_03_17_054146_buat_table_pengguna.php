@@ -12,13 +12,12 @@ class BuatTablePengguna extends Migration
      */
     public function up()
     {
-    Schema::create('pengguna',function(Blueprint $table) {
-        $table->increments('id');
-        $table->string('username');
-        $table->string('password');
-        $table->rememberToken();
-        $table->timestamps();
-     });    //
+        Schema::create('pengguna', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('username');
+            $table->string('password');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -26,7 +25,7 @@ class BuatTablePengguna extends Migration
      *
      * @return void
      */
-    public function down()//buat roolback jika di rollback maka tabel pengguna terhapus
+    public function down()
     {
         Schema::drop('pengguna');
     }
