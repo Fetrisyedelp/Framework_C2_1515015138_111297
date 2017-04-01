@@ -9,6 +9,7 @@ use App\Pengguna;
 
 class MahasiswaController extends Controller
 {
+    protected $informasi = "Gagal melakukan aksi";
     public function awal()
     {
         return view('mahasiswa.awal', ['data'=>Mahasiswa::all()]);
@@ -23,7 +24,7 @@ class MahasiswaController extends Controller
         $mahasiswa->nama = $input->nama;
         $mahasiswa->nim = $input->nim;
         $mahasiswa->alamat = $input->alamat;
-        return redirect ('mahasiswa')->with(['informasi'=>$this->informasi]);
+        return redirect('mahasiswa')->with(['informasi'=>$this->informasi]);
     }
 public function edit($id)
 {

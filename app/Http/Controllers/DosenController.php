@@ -9,6 +9,7 @@ use App\Pengguna;
 
 class DosenController extends Controller
 {
+    protected $informasi = "Gagal melakukan aksi";
     public function awal()
     {
         return view('dosen.awal', ['data'=>Dosen::all()]);

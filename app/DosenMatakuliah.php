@@ -7,27 +7,27 @@ use Illuminate\Database\Eloquent\Model;
 class DosenMatakuliah extends Model
 {
     protected $table = 'dosen_matakuliah';
-    protected $fillable=['dosen_id','matakuliah_id'];
+    // protected $fillable=['dosen_id','matakuliah_id'];
 
-    public function Dosen()
+    public function dosen()
     {
         return $this->belongsTo(Dosen::class);
     }
-    public function Matakuliah()
+    public function matakuliah()
     {
         return $this->belongsTo(Matakuliah::class);
     }
-    public function getNamadosenAttribute(){
-        return $this->dosen->nama;
-    }
-    public function getNipdosenAttribute(){
-        return $this->dosen->nip;
-    }
-    public function getTitlematakuliahAttribute(){
-        return $this->matakuliah->title;
-    }
+    // public function getNamadosenAttribute(){
+    //     return $this->dosen->nama;
+    // }
+    // public function getNipdosenAttribute(){
+    //     return $this->dosen->nip;
+    // }
+    // public function getTitlematakuliahAttribute(){
+    //     return $this->matakuliah->title;
+    // }
 
-    public function Jadwal_Matakuliah()
+    public function jadwal_matakuliah()
     {
         return $this->hasMany(JadwalMatakuliah::class);
     }
