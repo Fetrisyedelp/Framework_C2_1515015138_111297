@@ -2,27 +2,32 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Matakuliah;
+use App\Pengguna;
+use App\DosenMatakuliah;
 
 class MatakuliahController extends Controller
 {
+    protected $informasi = 'Gagal melakukan aksi';
     public function awal()
     {
-        return view('matakuliah.awal', ['data'=>Matakuliah::all()]);
+        $semuaMatakuliah = Matakuliah::all();
+        return view('matakuliah.awal',compact('semuaMatakuliah'));
     }
+
     public function tambah()
     {
         return view('matakuliah.tambah');
     }
+
     public function simpan(Request $input)
     {
-        $matakuliah = new Matakuliah;
-        $matakuliah->title = $input->title;
-        $matakuliah->keterangan = $input->keterangan;
-        $informasi = $matakuliah->save() ? 'Berhasil simpan data' : 'Gagal simpan data';
-        return redirect('matakuliah')->with(['informasi'=>$informasi]);
+            $matakuliah = new Matakuliah;
+            $matakuliah->title = $input->title;
+            $matakuliah->keterangan = $input->keterangan;
+            $informasi = $matakuliah->save()?'Berhasil simpan data' : 'Gagal simpan data';
+        return redirect('matakuliah')->with(['informasi'=>$this->informasi]);
     }
 public function edit($id)
 {
@@ -36,19 +41,19 @@ public function lihat($id)
 }
 public function update($id, Request $input)
 {
-
     $matakuliah = Matakuliah::find($id);
+    $pengguna = $matakuliah->pengguna;
     $matakuliah->title = $input->title;
     $matakuliah->keterangan = $input->keterangan;
-    $informasi = $matakuliah->save() ? 'Berhasil update data' : 'Gagal update data';
+    $informasi=$matakuliah->save()? 'Berhasil simpan data' : 'Gagal simpan data';
     return redirect('matakuliah')->with(['informasi'=>$informasi]);
 }
+
 public function hapus($id)
 {
-
     $matakuliah = Matakuliah::find($id);
-    $informasi = $matakuliah->delete() ? 'Berhasil hapus data' : 'Gagal hapus data';
-    return redirect('matakuliah')->with(['informasi'=>$informasi]);
+    $informasi = $matakuliah->delete()? 'Berhasil hapus data' : 'Gagal hapus data';
+    return redirect('matakuliah')->with(['informasi'=>$this->informasi]);
 }
 }
 

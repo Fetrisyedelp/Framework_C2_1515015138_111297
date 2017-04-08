@@ -10,7 +10,7 @@
         <thead>
             <tr>
                 <th>No.</th>
-                <th>Nama dosen</th>
+                <th>Nama Dosen</th>
                 <th>NIP</th>
                 <th>Alamat</th>
                 <th>Aksi</th>
@@ -18,7 +18,7 @@
         </thead>
         <tbody>
             <?php $x=1; ?>
-            @foreach ($data as $dosen)
+            @foreach ($semuaDosen as $dosen)
             <tr>
                 <td>{{ $x++}}</td>
                 <td>{{ $dosen->nama or 'nama Kosong'}}</td>

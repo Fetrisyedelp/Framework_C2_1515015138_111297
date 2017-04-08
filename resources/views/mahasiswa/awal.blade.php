@@ -18,7 +18,7 @@
         </thead>
         <tbody>
             <?php $x=1; ?>
-            @foreach ($data as $mahasiswa)
+            @foreach ($semuaMahasiswa as $mahasiswa)
             <tr>
                 <td>{{ $x++}}</td>
                 <td>{{ $mahasiswa->nama or 'nama Kosong'}}</td>

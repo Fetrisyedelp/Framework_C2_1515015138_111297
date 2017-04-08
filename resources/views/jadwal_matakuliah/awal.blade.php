@@ -18,7 +18,7 @@
         </thead>
         <tbody>
             <?php $x=1; ?>
-            @foreach ($data as $jadwal_matakuliah)
+            @foreach ($semuaJadwalMatakuliah as $jadwal_matakuliah)
             <tr>
                 <td>{{ $x++}}</td>
                 <td>{{ $jadwal_matakuliah->mahasiswa_id or 'ID Mahasiswa Kosong'}}</td>

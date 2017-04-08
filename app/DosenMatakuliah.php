@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class DosenMatakuliah extends Model
 {
     protected $table = 'dosen_matakuliah';
-    // protected $fillable=['dosen_id','matakuliah_id'];
-
+    protected $fillable=['dosen_id','matakuliah_id'];
+    // protected $guarded=['id'];
     public function dosen()
     {
         return $this->belongsTo(Dosen::class);
@@ -35,8 +35,8 @@ class DosenMatakuliah extends Model
     public function listDosenDanMatakuliah()
     {
     	$out = [];
-    	foreach ($this->all() as $dsnMtk) {
-    		$out[$dsnMtk->id] = "{$dsnMtk->dosen->nama} {$dsnMtk->dosen->nip} (Matakuliah {$dsnMtk->matakuliah->title})";
+    	foreach ($this->all() as $dosen_matakuliah) {
+    		$out[$dosen_matakuliah->id] = "{$dosen_matakuliah->dosen->nama} (matakuliah {$dosen_matakuliah->matakuliah->title})";
     	}
     	return $out;
     }

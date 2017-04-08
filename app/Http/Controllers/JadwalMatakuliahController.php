@@ -11,27 +11,38 @@ use App\Ruangan;
 
 class JadwalMatakuliahController extends Controller
 {
+    protected $guarded = ['id'];
+    protected $informasi = 'Gagal Melakukan Aksi';
     public function awal()
     {
-        return view('jadwal_matakuliah.awal', ['data'=>JadwalMatakuliah::all()]);
+        $semuaJadwalMatakuliah = JadwalMatakuliah::all();
+        return view('jadwal_matakuliah.awal', compact('semuaJadwalMatakuliah'));
     }
     public function tambah()
     {
-        return view('jadwal_matakuliah.tambah');
+        $mahasiswa = new Mahasiswa;
+        $ruangan = new Ruangan;
+        $dosen_matakuliah = new DosenMatakuliah;
+        return view('jadwal_matakuliah.tambah', compact('mahasiswa','ruangan'));
     }
     public function simpan(Request $input)
     {
-        $jadwal_matakuliah = new JadwalMatakuliah;
-        $jadwal_matakuliah->mahasiswa_id = $input->mahasiswa_id;
-        $jadwal_matakuliah->ruangan_id = $input->ruangan_id;
-        $jadwal_matakuliah->dosen_matakuliah_id = $input->dosen_matakuliah_id;
-        $informasi = $jadwal_matakuliah->save() ? 'Berhasil simpan data' : 'Gagal simpan data';
+        $jadwal_matakuliah = new JadwalMatakuliah($input->only('ruangan_id','dosen_matakuliah_id','mahasiswa_id'));
+        // $jadwal_matakuliah->mahasiswa_id = $input->mahasiswa_id;
+        // $jadwal_matakuliah->ruangan_id = $input->ruangan_id;
+        // $jadwal_matakuliah->dosen_matakuliah_id = $input->dosen_matakuliah_id;
+        // $informasi = $jadwal_matakuliah->save() ? 'Berhasil simpan data' : 'Gagal simpan data';
+        if ($jadwal_matakuliah->save()) $this->informasi = 'Jadwal Matakuliah Berhasil Di Simpan';
         return redirect('jadwal_matakuliah')->with(['informasi'=>$informasi]);
     }
+
 public function edit($id)
 {
     $jadwal_matakuliah = JadwalMatakuliah::find($id);
-    return view('jadwal_matakuliah.edit')->with(array('jadwal_matakuliah'=>$jadwal_matakuliah));
+    $mahasiswa = new Mahasiswa;
+    $ruangan = new Ruangan;
+    $dosen_matakuliah = new DosenMatakuliah;
+    return view('jadwal_matakuliah.edit', compact('mahasiswa','ruangan','dosen_matakuliah','jadwal_matakuliah'));
 }
 public function lihat($id)
 {
@@ -40,19 +51,16 @@ public function lihat($id)
 }
 public function update($id, Request $input)
 {
-
     $jadwal_matakuliah = JadwalMatakuliah::find($id);
-    $jadwal_matakuliah->mahasiswa_id = $input->mahasiswa_id;
-    $jadwal_matakuliah->ruangan_id = $input->ruangan_id;
-    $jadwal_matakuliah->dosen_matakuliah_id = $input->dosen_matakuliah_id;
-    $informasi = $jadwal_matakuliah->save() ? 'Berhasil update data' : 'Gagal update data';
-    return redirect('jadwal_matakuliah')->with(['informasi'=>$informasi]);
-}
+    $jadwal_matakuliah->fill($input->only('ruangan_id', 'dosen_matakuliah_id','mahasiswa_id'));       
+    if ($jadwal_matakuliah->save()) $this->informasi = "Jadwal Mahasiswa Berhasil di perbaharui";
+    return redirect('jadwal_matakuliah')->with(['informasi' =>$this->informasi]);
+    }
+
 public function hapus($id)
 {
-
     $jadwal_matakuliah = JadwalMatakuliah::find($id);
-    $informasi = $jadwal_matakuliah->delete() ? 'Berhasil hapus data' : 'Gagal hapus data';
-    return redirect('jadwal_matakuliah')->with(['informasi'=>$informasi]);
+    if ($jadwal_matakuliah->delete()) $this->informasi = "Jadwal Mahasiswa Berhasil di Hapus";
+    return redirect('jadwal_matakuliah')->with(['informasi'=>$this->informasi]);
 }
 }

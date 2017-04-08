@@ -17,7 +17,7 @@
 		</thead>
 		<tbody>
 			<?php $x=1; ?>
-			@foreach ($data as $matakuliah)
+			@foreach ($semuaMatakuliah as $matakuliah)
 			<tr>
 				<td>{{ $x++}}</td>
 				<td>{{ $matakuliah->title or 'title Kosong'}}</td>

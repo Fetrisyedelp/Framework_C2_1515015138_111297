@@ -38,9 +38,11 @@ Route::get('ruangan/hapus/{ruangan}','RuanganController@hapus');
 Route::get('ruangan/lihat/{ruangan}','RuanganController@lihat');
 
 
+// Route::get('mahasiswa','MahasiswaController@awal');
+// Route::get('mahasiswa/tambah','MahasiswaController@tambah');
 Route::get('mahasiswa','MahasiswaController@awal');
+//Route::get('mahasiswa/{mahasiswa}','MahasiswaController@awal');
 Route::get('mahasiswa/tambah','MahasiswaController@tambah');
-
 Route::post('mahasiswa/simpan','MahasiswaController@simpan');
 Route::get('mahasiswa/edit/{mahasiswa}','MahasiswaController@edit');
 Route::post('mahasiswa/edit/{mahasiswa}','MahasiswaController@update');
@@ -49,8 +51,8 @@ Route::get('mahasiswa/lihat/{mahasiswa}','MahasiswaController@lihat');
 
 
 Route::get('dosen','DosenController@awal');
+//Route::get('dosen/{dosen}','dosenController@awal');
 Route::get('dosen/tambah','DosenController@tambah');
-
 Route::post('dosen/simpan','DosenController@simpan');
 Route::get('dosen/edit/{dosen}','DosenController@edit');
 Route::post('dosen/edit/{dosen}','DosenController@update');
@@ -59,8 +61,8 @@ Route::get('dosen/lihat/{dosen}','DosenController@lihat');
 
 
 Route::get('dosen_matakuliah','DosenMatakuliahController@awal');
+//Route::get('dosen_matakuliah/{dosen_matakuliah}','dosen_matakuliahController@awal');
 Route::get('dosen_matakuliah/tambah','DosenMatakuliahController@tambah');
-
 Route::post('dosen_matakuliah/simpan','DosenMatakuliahController@simpan');
 Route::get('dosen_matakuliah/edit/{dosen_matakuliah}','DosenMatakuliahController@edit');
 Route::post('dosen_matakuliah/edit/{dosen_matakuliah}','DosenMatakuliahController@update');
@@ -93,7 +95,7 @@ Route::get('pengguna/tambah','PenggunaController@tambah');
 Route::get('pengguna','PenggunaController@awal');
 
 Route::get('/', function () {
-return view('welcome');
+return view('master');
 });
 // Route::get('/public', function () {
 //     return('Nama saya : Fetrisye Delp Parenden');
