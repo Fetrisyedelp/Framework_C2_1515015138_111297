@@ -17,15 +17,15 @@ class DosenMatakuliah extends Model
     {
         return $this->belongsTo(Matakuliah::class);
     }
-    // public function getNamadosenAttribute(){
-    //     return $this->dosen->nama;
-    // }
-    // public function getNipdosenAttribute(){
-    //     return $this->dosen->nip;
-    // }
-    // public function getTitlematakuliahAttribute(){
-    //     return $this->matakuliah->title;
-    // }
+    public function getNamadosenAttribute(){
+        return $this->dosen->nama;
+    }
+    public function getNipdosenAttribute(){
+        return $this->dosen->nip;
+    }
+    public function getTitlematakuliahAttribute(){
+        return $this->matakuliah->title;
+    }
 
     public function jadwal_matakuliah()
     {

@@ -29,6 +29,6 @@ class BuatTableDosenMatakuliah extends Migration
      */
     public function down()
     {
-        Schema::drop('dosen_matakuliah');
+        Schema::drop('dosenmatakuliah');
     }
 }

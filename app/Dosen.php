@@ -7,7 +7,7 @@ use Illuminate\database\Eloquent\Model;
 class Dosen extends Model
 {
     protected $table = 'dosen';
-    // protected $fillable=['nama','nip','alamat'];
+    protected $fillable=['nama','nip','alamat'];
     // protected $guarded=['id'];
 	public function pengguna()
     {

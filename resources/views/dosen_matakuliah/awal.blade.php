@@ -10,8 +10,8 @@
         <thead>
             <tr>
                 <th>No.</th>
-                <th>ID Dosen</th>
-                <th>ID Matakuliah</th>
+                <th>Dosen</th>
+                <th>Matakuliah</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -20,8 +20,8 @@
             @foreach ($semuaDosenMatakuliah as $dosen_matakuliah)
             <tr>
                 <td>{{ $x++}}</td>
-                <td>{{ $dosen_matakuliah->dosen_id or 'ID Dosen Kosong'}}</td>
-                <td>{{ $dosen_matakuliah->matakuliah_id or 'ID Matakuliah Kosong'}}</td>
+                <td>{{ $dosen_matakuliah->dosen->nama or 'ID Dosen Kosong'}}</td>
+                <td>{{ $dosen_matakuliah->matakuliah->title or 'ID Matakuliah Kosong'}}</td>
                 <td>
                     <div class="btn-group" role="group">
                         <a href="{{url('dosen_matakuliah/edit/'.$dosen_matakuliah->id)}}" class="btn btn-warning btn-xs" data-toogle="tooltip" data-placement="top" title="Ubah"><i class="fa fa-pencil"></i></a>

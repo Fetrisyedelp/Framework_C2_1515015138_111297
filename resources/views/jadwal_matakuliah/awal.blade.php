@@ -21,9 +21,9 @@
             @foreach ($semuaJadwalMatakuliah as $jadwal_matakuliah)
             <tr>
                 <td>{{ $x++}}</td>
-                <td>{{ $jadwal_matakuliah->mahasiswa_id or 'ID Mahasiswa Kosong'}}</td>
-                <td>{{ $jadwal_matakuliah->ruangan_id or 'ID Ruangan Kosong'}}</td>
-                <td>{{ $jadwal_matakuliah->dosen_id or 'ID Dosen Kosong'}}</td>
+                <td>{{ $jadwal_matakuliah->mahasiswa->nama or 'ID Mahasiswa Kosong'}}</td>
+                <td>{{ $jadwal_matakuliah->ruangan->title or 'ID Ruangan Kosong'}}</td>
+                <td>{{ $jadwal_matakuliah->dosen_matakuliah->matakuliah->title or 'ID Dosen Kosong'}}</td>
                 <td>
                     <div class="btn-group" role="group">
                         <a href="{{url('jadwal_matakuliah/edit/'.$jadwal_matakuliah->id)}}" class="btn btn-warning btn-xs" data-toogle="tooltip" data-placement="top" title="Ubah"><i class="fa fa-pencil"></i></a>

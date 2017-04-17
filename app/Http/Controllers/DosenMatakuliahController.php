@@ -36,7 +36,7 @@ public function edit($id)
     $dosen_matakuliah = DosenMatakuliah::find($id);
     $dosen = new Dosen;
     $matakuliah = new Matakuliah;
-    return view('dosen_matakuliah.edit')->with(array('dosen_matakuliah'=>$dosen_matakuliah));
+    return view('dosen_matakuliah.edit', compact('dosen','matakuliah','dosen_matakuliah'));
 }
 
 public function lihat($id)
@@ -46,10 +46,12 @@ public function lihat($id)
 }
 public function update($id, Request $input)
 {
-
     $dosen_matakuliah = DosenMatakuliah::find($id);
-    $dosen_matakuliah->fill($input->only('dosen_id','matakuliah_id'));
-    if($dosen_matakuliah->save()) $this->informasi = 'Dosen Matakuliah Berhasil Di Perbaharui';
+    $dosen_matakuliah->dosen_id=$input->dosen_id;
+    $dosen_matakuliah->matakuliah_id=$input->matakuliah_id;
+    $informasi=$dosen_matakuliah->save()?'Berhasil Update':'Gagal Update Data';
+    // $dosen_matakuliah->fill($input->only('dosen_id','matakuliah_id'));
+    // if($dosen_matakuliah->save()) $this->informasi = 'Dosen Matakuliah Berhasil Di Perbaharui';
     return redirect('dosen_matakuliah')->with(['informasi'=>$this->informasi]);
 }
 public function hapus($id)
