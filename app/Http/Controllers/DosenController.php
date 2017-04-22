@@ -5,6 +5,7 @@ use App\Http\Requests;
 use App\Dosen;
 use App\Pengguna;
 use App\DosenMatakuliah;
+use App\Http\Requests\DosenRequest;
 
 class DosenController extends Controller
 {
@@ -20,7 +21,7 @@ class DosenController extends Controller
         return view('dosen.tambah');
     }
 
-    public function simpan(Request $input)
+    public function simpan(DosenRequest $input)
     {
         $pengguna = new Pengguna($input->only('username','password'));
         if ($pengguna->save())
@@ -43,7 +44,7 @@ public function lihat($id)
     $dosen = Dosen::find($id);
     return view('dosen.lihat')->with(array('dosen'=>$dosen));
 }
-public function update($id, Request $input)
+public function update($id, DosenRequest $input)
 {
     $dosen = Dosen::find($id);
     $pengguna = $dosen->pengguna;
