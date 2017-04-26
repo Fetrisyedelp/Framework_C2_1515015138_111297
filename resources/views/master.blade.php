@@ -49,9 +49,6 @@
 							</li>
 							<li class="divider"></li>
 							<li>
-							<a href="{{ url('logout')}}">Logout</a>
-							</li>
-							<li>
 								<a href="{{url('jadwal_matakuliah')}}">Jadwal Mahasiswa</a>
 							</li>
 						</ul>
@@ -84,6 +81,9 @@
 								<a href="{{url('matakuliah')}}">Matakuliah</a>
 							</li>
 						</ul>
+						<li>
+							<a href="{{ url('logout')}}">Logout</a>
+							</li>
 					</li>					
 				</ul>
 			</div>

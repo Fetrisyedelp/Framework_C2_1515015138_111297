@@ -33,7 +33,7 @@ class SesiController extends Controller
     	if(! is_null($pengguna)){
     		Auth::login($pengguna);
     		if(Auth::check())
-    			return redirect('/')->with('informasi',"Selamat datang".Auth::user()->username);
+    			return redirect('/')->with('informasi',"Selamat datang ".Auth::user()->username);
     	}
     	return redirect('/login')->withErrors(['Pengguna tidak ditemukan']);
     }
